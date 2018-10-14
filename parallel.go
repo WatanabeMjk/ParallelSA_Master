@@ -155,6 +155,31 @@ import (
 
 func main() {
 	log.Print("started.")
-	C.mainFunc()
+
+	finished := make(chan bool)
+
+	funcs := []func(){
+		func(){
+			C.mainFunc()
+			finished <- true
+		},
+		func(){
+			C.mainFunc()
+			finished <- true
+		},
+		func(){
+			C.mainFunc()
+			finished <- true
+		},
+	}
+
+	for _, sa := range funcs{
+		go sa()
+	}
+
+	for i :=0; i < len(funcs); i++ {
+		<-finished
+	}
+
 	log.Print("end.")
 }
