@@ -151,10 +151,13 @@ import "C"
 
 import (
 	"log"
+	"time"
+	"fmt"
 )
 
 func main() {
 	log.Print("started.")
+	start := time.Now()
 
 	finished := make(chan bool)
 
@@ -181,5 +184,7 @@ func main() {
 		<-finished
 	}
 
+	end := time.Now()
+	fmt.Printf("%f秒\n",(end.Sub(start)).Seconds())
 	log.Print("end.")
 }
