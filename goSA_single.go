@@ -102,126 +102,20 @@ func orderCrossOver(routeA [][2]int, routeB [][2]int, afterRoute [][2]int, numbe
 	}
 }
 
-func BubbleSort(a []float64) []float64 {
-	for i := 0; i < len(a)-1; i++ {
-		for j := 0; j < len(a)-i-1; j++ {
-			if a[j] > a[j+1] {
-				a[j], a[j+1] = a[j+1], a[j]
-			}
-		}
-	}
-
-	return a
-}
-
-func bestOfRouteAB(distanceA float64, distanceB float64, distanceC float64, distanceD float64, routeA [][2]int, routeB [][2]int, routeC [][2]int, routeD [][2]int) {
-	sortDisc := make([]float64, 4)
-
-	sortDisc[0] = distanceA
-	sortDisc[1] = distanceB
-	sortDisc[2] = distanceC
-	sortDisc[3] = distanceD
-
-	BubbleSort(sortDisc)
-
-	fmt.Printf("No1:%f,No2:%f,No3:%f,No4:%f\n", sortDisc[0], sortDisc[1], sortDisc[2], sortDisc[3])
-
-	/*if sortDisc[0] == distanceB {
-		routeA = routeB
-	} else if sortDisc[0] == distanceC {
-		routeA = routeC
-	} else if sortDisc[0] == distanceD {
-		routeA = routeD
-	}
-
-	if sortDisc[1] == distanceA {
-		routeB = routeA
-	} else if sortDisc[1] == distanceC {
-		routeB = routeC
-	} else if sortDisc[1] == distanceD {
-		routeB = routeD
-	}*/
-
-	routeA = routeC
-	routeB = routeD
-}
-
 func main() {
 	routeA := [][2]int{{37, 52}, {49, 49}, {52, 64}, {20, 26}, {40, 30}, {21, 47}, {17, 63}, {31, 62}, {52, 33}, {51, 21}, {42, 41}, {31, 32}, {5, 25}, {12, 42}, {36, 16}, {52, 41}, {27, 23}, {17, 33}, {13, 13}, {57, 58}, {62, 42}, {42, 57}, {16, 57}, {8, 52}, {7, 38}, {27, 68}, {30, 48}, {43, 67}, {58, 48}, {58, 27}, {37, 69}, {38, 46}, {46, 10}, {61, 33}, {62, 63}, {63, 69}, {32, 22}, {45, 35}, {59, 15}, {5, 6}, {10, 17}, {21, 10}, {5, 64}, {30, 15}, {39, 10}, {32, 39}, {25, 32}, {25, 55}, {48, 28}, {56, 37}, {30, 40}}
-	routeB := [][2]int{{37, 52}, {49, 49}, {52, 64}, {20, 26}, {40, 30}, {21, 47}, {17, 63}, {31, 62}, {52, 33}, {51, 21}, {42, 41}, {31, 32}, {5, 25}, {12, 42}, {36, 16}, {52, 41}, {27, 23}, {17, 33}, {13, 13}, {57, 58}, {62, 42}, {42, 57}, {16, 57}, {8, 52}, {7, 38}, {27, 68}, {30, 48}, {43, 67}, {58, 48}, {58, 27}, {37, 69}, {38, 46}, {46, 10}, {61, 33}, {62, 63}, {63, 69}, {32, 22}, {45, 35}, {59, 15}, {5, 6}, {10, 17}, {21, 10}, {5, 64}, {30, 15}, {39, 10}, {32, 39}, {25, 32}, {25, 55}, {48, 28}, {56, 37}, {30, 40}}
 	var n int = 1000
 	var numberOfCitties int = 51
 	var initialT float64 = 100.0
 	var finalT float64 = 0.8
 	var coolingRate float64 = 0.9
-	var distanceA float64 = 0.0
-	var distanceB float64 = 0.0
-	var distanceC float64 = 0.0
-	var distanceD float64 = 0.0
-
-	routeC := make([][2]int, numberOfCitties)
-	routeD := make([][2]int, numberOfCitties)
 
 	log.Print("started.")
 	start := time.Now()
 
-	finished := make(chan bool)
-
-	funcs := []func(){
-		func() {
-			fmt.Printf("totalDistanceA:%f\n", totalDistance(routeA))
-			sa(routeA, numberOfCitties, n, initialT, finalT, coolingRate)
-			distanceA = totalDistance(routeA)
-			fmt.Printf("ResultTotalDistanceA:%f\n", distanceA)
-			finished <- true
-		},
-		func() {
-			fmt.Printf("totalDistanceB:%f\n", totalDistance(routeB))
-			sa(routeB, numberOfCitties, n, initialT, finalT, coolingRate)
-			distanceB = totalDistance(routeB)
-			fmt.Printf("ResultTotalDistanceB:%f\n", distanceB)
-			finished <- true
-		},
-	}
-
-	for _, sa := range funcs {
-		go sa()
-	}
-
-	for i := 0; i < len(funcs); i++ {
-		<-finished
-	}
-
-	finished2 := make(chan bool)
-
-	funcs2 := []func(){
-		func() {
-			orderCrossOver(routeA, routeB, routeC, numberOfCitties)
-			distanceC = totalDistance(routeC)
-			fmt.Printf("順序交叉の距離C:%f\n", distanceC)
-			finished2 <- true
-		},
-		func() {
-			orderCrossOver(routeB, routeA, routeD, numberOfCitties)
-			distanceD = totalDistance(routeD)
-			fmt.Printf("順序交叉の距離D:%f\n", distanceD)
-			finished2 <- true
-		},
-	}
-
-	for _, orderCrossOver := range funcs2 {
-		go orderCrossOver()
-	}
-
-	for i := 0; i < len(funcs2); i++ {
-		<-finished2
-	}
-
-	fmt.Printf("前No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
-
-	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD)
-
-	fmt.Printf("後No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
+	fmt.Printf("totalDistanceA:%f\n", totalDistance(routeA))
+	sa(routeA, numberOfCitties, n, initialT, finalT, coolingRate)
+	fmt.Printf("ResultTotalDistanceA:%f\n", totalDistance(routeA))
 
 	end := time.Now()
 	fmt.Printf("%f秒\n", (end.Sub(start)).Seconds())
