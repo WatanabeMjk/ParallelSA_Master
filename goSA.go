@@ -114,7 +114,7 @@ func BubbleSort(a []float64) []float64 {
 	return a
 }
 
-func bestOfRouteAB(distanceA float64, distanceB float64, distanceC float64, distanceD float64, routeA [][2]int, routeB [][2]int, routeC [][2]int, routeD [][2]int) {
+func bestOfRouteAB(distanceA float64, distanceB float64, distanceC float64, distanceD float64, routeA [][2]int, routeB [][2]int, routeC [][2]int, routeD [][2]int, numberOfCities int) {
 	sortDisc := make([]float64, 4)
 
 	sortDisc[0] = distanceA
@@ -122,28 +122,40 @@ func bestOfRouteAB(distanceA float64, distanceB float64, distanceC float64, dist
 	sortDisc[2] = distanceC
 	sortDisc[3] = distanceD
 
+	fmt.Printf("前No1:%f,No2:%f,No3:%f,No4:%f\n", sortDisc[0], sortDisc[1], sortDisc[2], sortDisc[3])
+
 	BubbleSort(sortDisc)
 
 	fmt.Printf("No1:%f,No2:%f,No3:%f,No4:%f\n", sortDisc[0], sortDisc[1], sortDisc[2], sortDisc[3])
 
-	/*if sortDisc[0] == distanceB {
-		routeA = routeB
+	if sortDisc[0] == distanceB {
+		for i := 0; i < numberOfCities; i++ {
+			routeA[i] = routeB[i]
+		}
 	} else if sortDisc[0] == distanceC {
-		routeA = routeC
+		for i := 0; i < numberOfCities; i++ {
+			routeA[i] = routeC[i]
+		}
 	} else if sortDisc[0] == distanceD {
-		routeA = routeD
+		for i := 0; i < numberOfCities; i++ {
+			routeA[i] = routeD[i]
+		}
 	}
 
 	if sortDisc[1] == distanceA {
-		routeB = routeA
+		for i := 0; i < numberOfCities; i++ {
+			routeB[i] = routeA[i]
+		}
 	} else if sortDisc[1] == distanceC {
-		routeB = routeC
+		for i := 0; i < numberOfCities; i++ {
+			routeB[i] = routeC[i]
+		}
 	} else if sortDisc[1] == distanceD {
-		routeB = routeD
-	}*/
+		for i := 0; i < numberOfCities; i++ {
+			routeB[i] = routeD[i]
+		}
+	}
 
-	routeA = routeC
-	routeB = routeD
 }
 
 func main() {
@@ -219,7 +231,7 @@ func main() {
 
 	fmt.Printf("前No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
 
-	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD)
+	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD, numberOfCitties)
 
 	fmt.Printf("後No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
 
