@@ -117,6 +117,12 @@ func BubbleSort(a []float64) []float64 {
 func bestOfRouteAB(distanceA float64, distanceB float64, distanceC float64, distanceD float64, routeA [][2]int, routeB [][2]int, routeC [][2]int, routeD [][2]int, numberOfCities int) {
 	sortDisc := make([]float64, 4)
 
+	tempRouteA := make([][2]int, numberOfCities)
+	tempRouteB := make([][2]int, numberOfCities)
+
+	var firstDistance string = ""
+	var secondDistance string = ""
+
 	sortDisc[0] = distanceA
 	sortDisc[1] = distanceB
 	sortDisc[2] = distanceC
@@ -126,34 +132,76 @@ func bestOfRouteAB(distanceA float64, distanceB float64, distanceC float64, dist
 
 	BubbleSort(sortDisc)
 
-	fmt.Printf("No1:%f,No2:%f,No3:%f,No4:%f\n", sortDisc[0], sortDisc[1], sortDisc[2], sortDisc[3])
+	fmt.Printf("後No1:%f,No2:%f,No3:%f,No4:%f\n", sortDisc[0], sortDisc[1], sortDisc[2], sortDisc[3])
 
-	if sortDisc[0] == distanceB {
+	switch sortDisc[0] {
+	case distanceA:
+		firstDistance = "A"
+	case distanceB:
+		firstDistance = "B"
+	case distanceC:
+		firstDistance = "C"
+	case distanceD:
+		firstDistance = "D"
+	}
+
+	switch sortDisc[1] {
+	case distanceA:
+		secondDistance = "A"
+	case distanceB:
+		secondDistance = "B"
+	case distanceC:
+		secondDistance = "C"
+	case distanceD:
+		secondDistance = "D"
+	}
+
+	fmt.Printf("文字列No:1%s,No2:%s\n", firstDistance, secondDistance)
+
+	switch firstDistance {
+	case "A":
 		for i := 0; i < numberOfCities; i++ {
-			routeA[i] = routeB[i]
+			tempRouteA[i] = routeA[i]
 		}
-	} else if sortDisc[0] == distanceC {
+	case "B":
 		for i := 0; i < numberOfCities; i++ {
-			routeA[i] = routeC[i]
+			tempRouteA[i] = routeB[i]
 		}
-	} else if sortDisc[0] == distanceD {
+	case "C":
 		for i := 0; i < numberOfCities; i++ {
-			routeA[i] = routeD[i]
+			tempRouteA[i] = routeC[i]
+		}
+	case "D":
+		for i := 0; i < numberOfCities; i++ {
+			tempRouteA[i] = routeD[i]
 		}
 	}
 
-	if sortDisc[1] == distanceA {
+	switch secondDistance {
+	case "A":
 		for i := 0; i < numberOfCities; i++ {
-			routeB[i] = routeA[i]
+			tempRouteB[i] = routeA[i]
 		}
-	} else if sortDisc[1] == distanceC {
+	case "B":
 		for i := 0; i < numberOfCities; i++ {
-			routeB[i] = routeC[i]
+			tempRouteB[i] = routeB[i]
 		}
-	} else if sortDisc[1] == distanceD {
+	case "C":
 		for i := 0; i < numberOfCities; i++ {
-			routeB[i] = routeD[i]
+			tempRouteB[i] = routeC[i]
 		}
+	case "D":
+		for i := 0; i < numberOfCities; i++ {
+			tempRouteB[i] = routeD[i]
+		}
+	}
+
+	for i := 0; i < numberOfCities; i++ {
+		routeA[i] = tempRouteA[i]
+	}
+
+	for i := 0; i < numberOfCities; i++ {
+		routeB[i] = tempRouteB[i]
 	}
 
 }
@@ -162,7 +210,7 @@ func main() {
 	routeA := [][2]int{{37, 52}, {49, 49}, {52, 64}, {20, 26}, {40, 30}, {21, 47}, {17, 63}, {31, 62}, {52, 33}, {51, 21}, {42, 41}, {31, 32}, {5, 25}, {12, 42}, {36, 16}, {52, 41}, {27, 23}, {17, 33}, {13, 13}, {57, 58}, {62, 42}, {42, 57}, {16, 57}, {8, 52}, {7, 38}, {27, 68}, {30, 48}, {43, 67}, {58, 48}, {58, 27}, {37, 69}, {38, 46}, {46, 10}, {61, 33}, {62, 63}, {63, 69}, {32, 22}, {45, 35}, {59, 15}, {5, 6}, {10, 17}, {21, 10}, {5, 64}, {30, 15}, {39, 10}, {32, 39}, {25, 32}, {25, 55}, {48, 28}, {56, 37}, {30, 40}}
 	routeB := [][2]int{{37, 52}, {49, 49}, {52, 64}, {20, 26}, {40, 30}, {21, 47}, {17, 63}, {31, 62}, {52, 33}, {51, 21}, {42, 41}, {31, 32}, {5, 25}, {12, 42}, {36, 16}, {52, 41}, {27, 23}, {17, 33}, {13, 13}, {57, 58}, {62, 42}, {42, 57}, {16, 57}, {8, 52}, {7, 38}, {27, 68}, {30, 48}, {43, 67}, {58, 48}, {58, 27}, {37, 69}, {38, 46}, {46, 10}, {61, 33}, {62, 63}, {63, 69}, {32, 22}, {45, 35}, {59, 15}, {5, 6}, {10, 17}, {21, 10}, {5, 64}, {30, 15}, {39, 10}, {32, 39}, {25, 32}, {25, 55}, {48, 28}, {56, 37}, {30, 40}}
 	var n int = 1000
-	var numberOfCitties int = 51
+	var numberOfCities int = 51
 	var initialT float64 = 100.0
 	var finalT float64 = 0.8
 	var coolingRate float64 = 0.9
@@ -171,81 +219,143 @@ func main() {
 	var distanceC float64 = 0.0
 	var distanceD float64 = 0.0
 
-	routeC := make([][2]int, numberOfCitties)
-	routeD := make([][2]int, numberOfCitties)
+	routeC := make([][2]int, numberOfCities)
+	routeD := make([][2]int, numberOfCities)
 
 	log.Print("started.")
 	start := time.Now()
 
-	finished := make(chan bool)
+	saFinished := make(chan bool)
 
-	funcs := []func(){
+	saFuncs := []func(){
 		func() {
 			fmt.Printf("totalDistanceA:%f\n", totalDistance(routeA))
-			sa(routeA, numberOfCitties, n, initialT, finalT, coolingRate)
+			sa(routeA, numberOfCities, n, initialT, finalT, coolingRate)
 			distanceA = totalDistance(routeA)
 			fmt.Printf("ResultTotalDistanceA:%f\n", distanceA)
-			finished <- true
+			saFinished <- true
 		},
 		func() {
 			fmt.Printf("totalDistanceB:%f\n", totalDistance(routeB))
-			sa(routeB, numberOfCitties, n, initialT, finalT, coolingRate)
+			sa(routeB, numberOfCities, n, initialT, finalT, coolingRate)
 			distanceB = totalDistance(routeB)
 			fmt.Printf("ResultTotalDistanceB:%f\n", distanceB)
-			finished <- true
+			saFinished <- true
 		},
 	}
 
-	for _, sa := range funcs {
+	for _, sa := range saFuncs {
 		go sa()
 	}
 
-	for i := 0; i < len(funcs); i++ {
-		<-finished
+	for i := 0; i < len(saFuncs); i++ {
+		<-saFinished
 	}
 
-	finished2 := make(chan bool)
+	coFinished := make(chan bool)
 
-	funcs2 := []func(){
+	coFuncs := []func(){
 		func() {
-			orderCrossOver(routeA, routeB, routeC, numberOfCitties)
+			orderCrossOver(routeA, routeB, routeC, numberOfCities)
 			distanceC = totalDistance(routeC)
 			fmt.Printf("順序交叉の距離C:%f\n", distanceC)
-			finished2 <- true
+			coFinished <- true
 		},
 		func() {
-			orderCrossOver(routeB, routeA, routeD, numberOfCitties)
+			orderCrossOver(routeB, routeA, routeD, numberOfCities)
 			distanceD = totalDistance(routeD)
 			fmt.Printf("順序交叉の距離D:%f\n", distanceD)
-			finished2 <- true
+			coFinished <- true
 		},
 	}
 
-	for _, orderCrossOver := range funcs2 {
+	for _, orderCrossOver := range coFuncs {
 		go orderCrossOver()
 	}
 
-	for i := 0; i < len(funcs2); i++ {
-		<-finished2
+	for i := 0; i < len(coFuncs); i++ {
+		<-coFinished
 	}
 
 	fmt.Printf("前No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
 
-	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD, numberOfCitties)
+	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD, numberOfCities)
+
+	fmt.Printf("後No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
+
+	//SA_2回目
+
+	saFinished_2 := make(chan bool)
+
+	saFuncs_2 := []func(){
+		func() {
+			fmt.Printf("totalDistanceA:%f\n", totalDistance(routeA))
+			sa(routeA, numberOfCities, n, initialT, finalT, coolingRate)
+			distanceA = totalDistance(routeA)
+			fmt.Printf("ResultTotalDistanceA:%f\n", distanceA)
+			saFinished_2 <- true
+		},
+		func() {
+			fmt.Printf("totalDistanceB:%f\n", totalDistance(routeB))
+			sa(routeB, numberOfCities, n, initialT, finalT, coolingRate)
+			distanceB = totalDistance(routeB)
+			fmt.Printf("ResultTotalDistanceB:%f\n", distanceB)
+			saFinished_2 <- true
+		},
+	}
+
+	for _, sa := range saFuncs_2 {
+		go sa()
+	}
+
+	for i := 0; i < len(saFuncs_2); i++ {
+		<-saFinished_2
+	}
+
+	coFinished_2 := make(chan bool)
+
+	coFuncs_2 := []func(){
+		func() {
+			//ここで進まなくなる
+			orderCrossOver(routeA, routeB, routeC, numberOfCities)
+			distanceC = totalDistance(routeC)
+			fmt.Printf("順序交叉の距離C:%f\n", distanceC)
+			coFinished_2 <- true
+		},
+		func() {
+			//ここで進まなくなる
+			orderCrossOver(routeB, routeA, routeD, numberOfCities)
+			distanceD = totalDistance(routeD)
+			fmt.Printf("順序交叉の距離D:%f\n", distanceD)
+			coFinished_2 <- true
+		},
+	}
+
+	for _, orderCrossOver := range coFuncs_2 {
+		go orderCrossOver()
+	}
+
+	for i := 0; i < len(coFuncs_2); i++ {
+		<-coFinished_2
+	}
+
+	fmt.Printf("前No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
+
+	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD, numberOfCities)
 
 	fmt.Printf("後No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
 
 	end := time.Now()
 	fmt.Printf("%f秒\n", (end.Sub(start)).Seconds())
 
-	/*for i := 0; i < numberOfCitties; i++ {
+	/*for i := 0; i < numberOfCities; i++ {
 		fmt.Printf("%d個目:RouteC:%d\n", i, routeC[i])
 	}
 
 	//重複チェック
 	var k int = 0
-	for i := 0; i < numberOfCitties; i++ {
-		for j := 0; j < numberOfCitties; j++ {
+	for i := 0; i < numberOfCities; i++ {
+		for j := 0; j < numberOfCities; j++ {
 			if routeC[i] == routeA[j] {
 				k++
 			}
