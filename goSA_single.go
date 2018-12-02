@@ -118,7 +118,7 @@ func main() {
 	fmt.Printf("ResultTotalDistanceA:%f\n", totalDistance(routeA))
 
 	end := time.Now()
-	fmt.Printf("%f秒\n", (end.Sub(start)).Seconds())
+	fmt.Printf("実行時間%f秒\n", (end.Sub(start)).Seconds())
 
 	/*for i := 0; i < numberOfCitties; i++ {
 		fmt.Printf("%d個目:RouteC:%d\n", i, routeC[i])
