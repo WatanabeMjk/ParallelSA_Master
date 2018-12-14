@@ -9,10 +9,11 @@ import (
 )
 
 func main() {
-	routeA := [][2]float64{{11003.611100, 42102.500000},{11108.611100, 42373.888900},{11133.333300, 42885.833300},{11155.833300, 42712.500000},{11183.333300, 42933.333300},{11297.500000, 42853.333300},{11310.277800, 42929.444400},{11416.666700, 42983.333300},{11423.888900, 43000.277800},{11438.333300, 42057.222200},{11461.111100, 43252.777800},{11485.555600, 43187.222200},{11503.055600, 42855.277800},{11511.388900, 42106.388900},{11522.222200, 42841.944400},{11569.444400, 43136.666700},{11583.333300, 43150.000000},{11595.000000, 43148.055600},{11600.000000, 43150.000000},{11690.555600, 42686.666700},{11715.833300, 41836.111100},{11751.111100, 42814.444400},{11770.277800, 42651.944400},{11785.277800, 42884.444400},{11822.777800, 42673.611100},{11846.944400, 42660.555600},{11963.055600, 43290.555600},{11973.055600, 43026.111100},{12058.333300, 42195.555600},{12149.444400, 42477.500000},{12286.944400, 43355.555600},{12300.000000, 42433.333300},{12355.833300, 43156.388900},{12363.333300, 43189.166700},{12372.777800, 42711.388900},{12386.666700, 43334.722200},{12421.666700, 42895.555600},{12645.000000, 42973.333300}}
-	routeB := [][2]float64{{11003.611100, 42102.500000},{11108.611100, 42373.888900},{11133.333300, 42885.833300},{11155.833300, 42712.500000},{11183.333300, 42933.333300},{11297.500000, 42853.333300},{11310.277800, 42929.444400},{11416.666700, 42983.333300},{11423.888900, 43000.277800},{11438.333300, 42057.222200},{11461.111100, 43252.777800},{11485.555600, 43187.222200},{11503.055600, 42855.277800},{11511.388900, 42106.388900},{11522.222200, 42841.944400},{11569.444400, 43136.666700},{11583.333300, 43150.000000},{11595.000000, 43148.055600},{11600.000000, 43150.000000},{11690.555600, 42686.666700},{11715.833300, 41836.111100},{11751.111100, 42814.444400},{11770.277800, 42651.944400},{11785.277800, 42884.444400},{11822.777800, 42673.611100},{11846.944400, 42660.555600},{11963.055600, 43290.555600},{11973.055600, 43026.111100},{12058.333300, 42195.555600},{12149.444400, 42477.500000},{12286.944400, 43355.555600},{12300.000000, 42433.333300},{12355.833300, 43156.388900},{12363.333300, 43189.166700},{12372.777800, 42711.388900},{12386.666700, 43334.722200},{12421.666700, 42895.555600},{12645.000000, 42973.333300}}
+	routeA := [][2]float64{{11003.611100, 42102.500000}, {11108.611100, 42373.888900}, {11133.333300, 42885.833300}, {11155.833300, 42712.500000}, {11183.333300, 42933.333300}, {11297.500000, 42853.333300}, {11310.277800, 42929.444400}, {11416.666700, 42983.333300}, {11423.888900, 43000.277800}, {11438.333300, 42057.222200}, {11461.111100, 43252.777800}, {11485.555600, 43187.222200}, {11503.055600, 42855.277800}, {11511.388900, 42106.388900}, {11522.222200, 42841.944400}, {11569.444400, 43136.666700}, {11583.333300, 43150.000000}, {11595.000000, 43148.055600}, {11600.000000, 43150.000000}, {11690.555600, 42686.666700}, {11715.833300, 41836.111100}, {11751.111100, 42814.444400}, {11770.277800, 42651.944400}, {11785.277800, 42884.444400}, {11822.777800, 42673.611100}, {11846.944400, 42660.555600}, {11963.055600, 43290.555600}, {11973.055600, 43026.111100}, {12058.333300, 42195.555600}, {12149.444400, 42477.500000}, {12286.944400, 43355.555600}, {12300.000000, 42433.333300}, {12355.833300, 43156.388900}, {12363.333300, 43189.166700}, {12372.777800, 42711.388900}, {12386.666700, 43334.722200}, {12421.666700, 42895.555600}, {12645.000000, 42973.333300}}
+	routeB := [][2]float64{{11003.611100, 42102.500000}, {11108.611100, 42373.888900}, {11133.333300, 42885.833300}, {11155.833300, 42712.500000}, {11183.333300, 42933.333300}, {11297.500000, 42853.333300}, {11310.277800, 42929.444400}, {11416.666700, 42983.333300}, {11423.888900, 43000.277800}, {11438.333300, 42057.222200}, {11461.111100, 43252.777800}, {11485.555600, 43187.222200}, {11503.055600, 42855.277800}, {11511.388900, 42106.388900}, {11522.222200, 42841.944400}, {11569.444400, 43136.666700}, {11583.333300, 43150.000000}, {11595.000000, 43148.055600}, {11600.000000, 43150.000000}, {11690.555600, 42686.666700}, {11715.833300, 41836.111100}, {11751.111100, 42814.444400}, {11770.277800, 42651.944400}, {11785.277800, 42884.444400}, {11822.777800, 42673.611100}, {11846.944400, 42660.555600}, {11963.055600, 43290.555600}, {11973.055600, 43026.111100}, {12058.333300, 42195.555600}, {12149.444400, 42477.500000}, {12286.944400, 43355.555600}, {12300.000000, 42433.333300}, {12355.833300, 43156.388900}, {12363.333300, 43189.166700}, {12372.777800, 42711.388900}, {12386.666700, 43334.722200}, {12421.666700, 42895.555600}, {12645.000000, 42973.333300}}
 
-	var n int = 1000
+	var n int = 1000 //一回の温度の中のSA試行回数
+	var m int = 10   //一回のSAの中の試行回数
 	var numberOfCities int = len(routeA)
 	var initialT float64 = 100.0
 	var finalT float64 = 0.8
@@ -21,7 +22,7 @@ func main() {
 	var distanceB float64 = 0.0
 	var distanceC float64 = 0.0
 	var distanceD float64 = 0.0
-	fmt.Printf("numberOfCities:%d\n",numberOfCities)
+	fmt.Printf("numberOfCities:%d\n", numberOfCities)
 
 	for i := 0; i < numberOfCities; i++ {
 		for j := 0; j < numberOfCities; j++ {
@@ -38,128 +39,74 @@ func main() {
 
 	log.Print("started.")
 	start := time.Now()
-	//SA_1回目
-	fmt.Printf("\nSA1回目\n")
+	//SA
+	var saNumber = 0
+	for initialT > finalT {
+		saNumber++
+		fmt.Printf("\nSA%d回目\n", saNumber)
 
-	saFinished := make(chan bool)
+		saFinished := make(chan bool)
 
-	saFuncs := []func(){
-		func() {
-			fmt.Printf("totalDistanceA:%f\n", totalDistance(routeA))
-			sa(routeA, numberOfCities, n, initialT, finalT, coolingRate)
-			distanceA = totalDistance(routeA)
-			fmt.Printf("ResultTotalDistanceA:%f\n", distanceA)
-			saFinished <- true
-		},
-		func() {
-			fmt.Printf("totalDistanceB:%f\n", totalDistance(routeB))
-			sa(routeB, numberOfCities, n, initialT, finalT, coolingRate)
-			distanceB = totalDistance(routeB)
-			fmt.Printf("ResultTotalDistanceB:%f\n", distanceB)
-			saFinished <- true
-		},
+		saFuncs := []func(){
+			func() {
+				fmt.Printf("totalDistanceA:%f\n", totalDistance(routeA))
+				sa(routeA, numberOfCities, n, m, &initialT, finalT, coolingRate)
+				distanceA = totalDistance(routeA)
+				fmt.Printf("ResultTotalDistanceA:%f\n", distanceA)
+				saFinished <- true
+			},
+			func() {
+				fmt.Printf("totalDistanceB:%f\n", totalDistance(routeB))
+				sa(routeB, numberOfCities, n, m, &initialT, finalT, coolingRate)
+				distanceB = totalDistance(routeB)
+				fmt.Printf("ResultTotalDistanceB:%f\n", distanceB)
+				saFinished <- true
+			},
+		}
+
+		for _, sa := range saFuncs {
+			go sa()
+		}
+
+		for i := 0; i < len(saFuncs); i++ {
+			<-saFinished
+		}
+
+		coFinished := make(chan bool)
+
+		coFuncs := []func(){
+			func() {
+				orderCrossOver(routeA, routeB, routeC, numberOfCities)
+				distanceC = totalDistance(routeC)
+				fmt.Printf("順序交叉の距離C:%f\n", distanceC)
+				coFinished <- true
+			},
+			func() {
+				orderCrossOver(routeB, routeA, routeD, numberOfCities)
+				distanceD = totalDistance(routeD)
+				fmt.Printf("順序交叉の距離D:%f\n", distanceD)
+				coFinished <- true
+			},
+		}
+
+		for _, orderCrossOver := range coFuncs {
+			go orderCrossOver()
+		}
+
+		for i := 0; i < len(coFuncs); i++ {
+			<-coFinished
+		}
+
+		fmt.Printf("前No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
+
+		bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD, numberOfCities)
+
+		fmt.Printf("後No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
 	}
 
-	for _, sa := range saFuncs {
-		go sa()
-	}
-
-	for i := 0; i < len(saFuncs); i++ {
-		<-saFinished
-	}
-
-	coFinished := make(chan bool)
-
-	coFuncs := []func(){
-		func() {
-			orderCrossOver(routeA, routeB, routeC, numberOfCities)
-			distanceC = totalDistance(routeC)
-			fmt.Printf("順序交叉の距離C:%f\n", distanceC)
-			coFinished <- true
-		},
-		func() {
-			orderCrossOver(routeB, routeA, routeD, numberOfCities)
-			distanceD = totalDistance(routeD)
-			fmt.Printf("順序交叉の距離D:%f\n", distanceD)
-			coFinished <- true
-		},
-	}
-
-	for _, orderCrossOver := range coFuncs {
-		go orderCrossOver()
-	}
-
-	for i := 0; i < len(coFuncs); i++ {
-		<-coFinished
-	}
-
-	fmt.Printf("前No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
-
-	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD, numberOfCities)
-
-	fmt.Printf("後No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
-
-	//SA_2回目
-	fmt.Printf("\nSA2回目\n")
-
-	saFinished2 := make(chan bool)
-
-	saFuncs2 := []func(){
-		func() {
-			fmt.Printf("totalDistanceA:%f\n", totalDistance(routeA))
-			sa(routeA, numberOfCities, n, initialT, finalT, coolingRate)
-			distanceA = totalDistance(routeA)
-			fmt.Printf("ResultTotalDistanceA:%f\n", distanceA)
-			saFinished2 <- true
-		},
-		func() {
-			fmt.Printf("totalDistanceB:%f\n", totalDistance(routeB))
-			sa(routeB, numberOfCities, n, initialT, finalT, coolingRate)
-			distanceB = totalDistance(routeB)
-			fmt.Printf("ResultTotalDistanceB:%f\n", distanceB)
-			saFinished2 <- true
-		},
-	}
-
-	for _, sa := range saFuncs2 {
-		go sa()
-	}
-
-	for i := 0; i < len(saFuncs2); i++ {
-		<-saFinished2
-	}
-
-	coFinished2 := make(chan bool)
-
-	coFuncs2 := []func(){
-		func() {
-			orderCrossOver(routeA, routeB, routeC, numberOfCities)
-			distanceC = totalDistance(routeC)
-			fmt.Printf("順序交叉の距離C:%f\n", distanceC)
-			coFinished2 <- true
-		},
-		func() {
-			orderCrossOver(routeB, routeA, routeD, numberOfCities)
-			distanceD = totalDistance(routeD)
-			fmt.Printf("順序交叉の距離D:%f\n", distanceD)
-			coFinished2 <- true
-		},
-	}
-
-	for _, orderCrossOver := range coFuncs2 {
-		go orderCrossOver()
-	}
-
-	for i := 0; i < len(coFuncs2); i++ {
-		<-coFinished2
-	}
-
-	fmt.Printf("前No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
-
-	bestOfRouteAB(distanceA, distanceB, distanceC, distanceD, routeA, routeB, routeC, routeD, numberOfCities)
-
-	fmt.Printf("後No1.%f,No2.%f\n", totalDistance(routeA), totalDistance(routeB))
-
+	//SA終了　要素チェック
+	fmt.Printf("最終温度initialD:%f\n", initialT)
+	fmt.Printf("ループ回数:%d\n", saNumber)
 	for i := 0; i < numberOfCities; i++ {
 		for j := 0; j < numberOfCities; j++ {
 			if i != j {
@@ -171,7 +118,7 @@ func main() {
 		}
 	}
 
-	fmt.Printf("routeAの要素数:%d\n",len(routeA))
+	fmt.Printf("routeAの要素数:%d\n", len(routeA))
 
 	end := time.Now()
 	fmt.Printf("実行時間：%f秒\n", (end.Sub(start)).Seconds())
@@ -215,7 +162,7 @@ func shouldChange(delta float64, t float64) bool {
 	return false
 }
 
-func sa(route [][2]float64, numberOfCities int, n int, initialT float64, finalT float64, coolingRate float64) {
+func sa(route [][2]float64, numberOfCities int, n int, m int, initialT *float64, finalT float64, coolingRate float64) {
 	var randomIndex1 int
 	var randomIndex2 int
 	var currentTotalDistance float64
@@ -224,7 +171,7 @@ func sa(route [][2]float64, numberOfCities int, n int, initialT float64, finalT 
 	rand.Seed(time.Now().UnixNano())
 	currentTotalDistance = totalDistance(route)
 
-	for t := initialT; t > finalT; t *= coolingRate {
+	for p := 0; p < m; p++ {
 		for i := 0; i < n; i++ {
 			randomIndex1 = rand.Int() % numberOfCities
 			randomIndex2 = rand.Int() % numberOfCities
@@ -233,11 +180,15 @@ func sa(route [][2]float64, numberOfCities int, n int, initialT float64, finalT 
 
 			newTotalDistance = totalDistance(route)
 
-			if shouldChange(newTotalDistance-currentTotalDistance, t) {
+			if shouldChange(newTotalDistance-currentTotalDistance, *initialT) {
 				currentTotalDistance = newTotalDistance
 			} else {
 				swap(route, randomIndex1, randomIndex2)
 			}
+		}
+		*initialT *= coolingRate
+		if *initialT > finalT {
+			return
 		}
 	}
 }
@@ -250,30 +201,8 @@ func orderCrossOver(routeA [][2]float64, routeB [][2]float64, afterRoute [][2]fl
 		//fmt.Printf("%d個目:Route:%d\n", i, afterRoute[i])
 	}
 
-	var f int = 0
-	var i int = 0
-	for f < numberSplit {
-		var h int = 0
-		for j := numberSplit; j < (numberSplit * 2); j++ {
-			if routeB[i] == afterRoute[j] {
-				//fmt.Printf("かぶり発生\n")
-				break
-			} else {
-				h++
-				//fmt.Printf("h:%d", h)
-				if h == numberSplit {
-					//fmt.Printf("f:%d ,", f)
-					afterRoute[f] = routeB[i]
-					//fmt.Printf("%d個目:Route:%d\n", f, afterRoute[f])
-					f++
-					//fmt.Printf("i:%d, f:%d. j:%d \n", i, f, j)
-				}
-			}
-		}
-		i++
-	}
-
-	f = (numberSplit * 2)
+	var f = (numberSplit * 2)
+	var i = 0
 	for f < numberOfCities {
 		var h int = 0
 		for j := numberSplit; j < (numberSplit * 2); j++ {
@@ -294,8 +223,31 @@ func orderCrossOver(routeA [][2]float64, routeB [][2]float64, afterRoute [][2]fl
 		}
 		i++
 	}
+
+	f = 0
+	for f < numberSplit {
+		var h int = 0
+		for j := numberSplit; j < (numberSplit * 2); j++ {
+			if routeB[i] == afterRoute[j] {
+				//fmt.Printf("かぶり発生\n")
+				break
+			} else {
+				h++
+				//fmt.Printf("h:%d", h)
+				if h == numberSplit {
+					//fmt.Printf("f:%d ,", f)
+					afterRoute[f] = routeB[i]
+					//fmt.Printf("%d個目:Route:%d\n", f, afterRoute[f])
+					f++
+					//fmt.Printf("i:%d, f:%d. j:%d \n", i, f, j)
+				}
+			}
+		}
+		i++
+	}
 }
 
+//バブルソート
 func BubbleSort(a []float64) {
 	for i := 0; i < len(a)-1; i++ {
 		for j := 0; j < len(a)-i-1; j++ {
