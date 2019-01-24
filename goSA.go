@@ -190,9 +190,6 @@ func sa(route [][2]float64, numberOfCities int, n int, initialT float64, finalT 
 			swap(route, randomIndex1, randomIndex2)
 		}
 	}
-	if initialT > finalT {
-		return
-	}
 }
 
 func orderCrossOver(routeA [][2]float64, routeB [][2]float64, afterRoute [][2]float64, numberOfCities int) {
